@@ -10,7 +10,6 @@ def display_last_operations(file):
         if operation['state'] == 'EXECUTED':
             executed_operations.append(operation)
     sorted_operations = sorted(executed_operations, key=sorted_by_date, reverse=True)[:5]
-    print(sorted_operations)
     return sorted_operations
 
 def show_operations(sorted_operations):

@@ -1,9 +1,11 @@
-import json
-from src.utils import display_last_operations, show_operations
+from src.utils import *
 
-''' Главный код функции '''
-if __name__ == "__main__":
-    with open('operations.json', 'r', encoding='utf-8') as json_file:
-        file = json.load(json_file)
-        last_operations = display_last_operations(file)
-        show_operations(last_operations)
+if __name__ == '__main__':
+    loadet_operations = load_operations('operations.json')
+    sorted_operations = last_five_operations(loadet_operations)
+    for element in sorted_operations:
+        operation = Operation(element)
+        print(f'''
+{operation.date_format()} {operation.show_description()}
+{operation.censore_number(operation.show_from())} -> {operation.censore_number(operation.show_to())}
+{operation.amount()}''')
